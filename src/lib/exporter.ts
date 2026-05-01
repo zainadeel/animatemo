@@ -30,6 +30,7 @@ const round = (n: number): string => (Math.round(n * 1000) / 1000).toString();
 
 const collectPaths = (
   node: AnimNode,
+  project: AnimProject,
   out: { id: string; tweens: string[]; setLines: string[] }[] = []
 ): typeof out => {
   if (node.tracks.length > 0) {
@@ -37,6 +38,8 @@ const collectPaths = (
     const setLines: string[] = [];
 
     for (const track of node.tracks) {
+      // `d` morph only valid on <path>; skip on groups
+      if (track.prop === 'd' && node.tag !== 'path') continue;
       const kfs = [...track.keyframes].sort((a, b) => a.time - b.time);
       if (kfs.length === 0) continue;
 
@@ -60,18 +63,28 @@ const collectPaths = (
           `tl.to(el, ${propLine(track.prop, b.value, dur, b.ease, transformOrigin)}, ${round(a.time)});`
         );
       }
+
+      // Seamless loop closing tween: morph from last keyframe back to first
+      // over the trailing gap, so loop boundary doesn't snap.
+      const last = kfs[kfs.length - 1];
+      const closingGap = project.duration - last.time;
+      if (project.loop && !project.yoyo && closingGap > 0.001 && kfs.length >= 2) {
+        tweens.push(
+          `tl.to(el, ${propLine(track.prop, first.value, closingGap, first.ease, transformOrigin)}, ${round(last.time)});`
+        );
+      }
     }
 
     if (tweens.length > 0 || setLines.length > 0) {
       out.push({ id: node.id, tweens, setLines });
     }
   }
-  node.children.forEach(c => collectPaths(c, out));
+  node.children.forEach(c => collectPaths(c, project, out));
   return out;
 };
 
 export const exportCode = (project: AnimProject, fnName = 'buildAnimation'): string => {
-  const animatedNodes = collectPaths(project.root);
+  const animatedNodes = collectPaths(project.root, project);
   const usesMorph = animatedNodes.some(n => n.tweens.some(t => t.includes('morphSVG')));
 
   const imports = [`import { gsap } from 'gsap';`];

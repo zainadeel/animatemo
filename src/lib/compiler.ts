@@ -45,6 +45,8 @@ export const buildTimeline = (
     const el = refs.get(node.id);
     if (el) {
       for (const track of node.tracks) {
+        // `d` morph only valid on <path>; skip on groups etc.
+        if (track.prop === 'd' && node.tag !== 'path') continue;
         const kfs = [...track.keyframes].sort((a, b) => a.time - b.time);
         if (kfs.length === 0) continue;
 
@@ -67,6 +69,28 @@ export const buildTimeline = (
             vars.transformOrigin = node.attrs['transform-origin'] ?? '50% 50%';
           }
           tl.to(el, vars, a.time);
+        }
+
+        // Seamless loop: synthesize a closing tween from the last keyframe value
+        // back to the first, occupying the gap between lastKf.time and project.duration.
+        // This way the loop point morphs smoothly instead of snapping.
+        const last = kfs[kfs.length - 1];
+        const closingGap = project.duration - last.time;
+        if (project.loop && !project.yoyo && closingGap > 0.001 && kfs.length >= 2) {
+          const isNumeric = NUMERIC_PROPS.includes(track.prop);
+          const closingValue =
+            isNumeric && typeof first.value === 'string'
+              ? Number(first.value)
+              : (first.value as number | string);
+          const vars: gsap.TweenVars = {
+            ...tweenVarsForProp(track.prop, closingValue),
+            duration: closingGap,
+            ease: first.ease,
+          };
+          if (TRANSFORM_PROPS.has(track.prop)) {
+            vars.transformOrigin = node.attrs['transform-origin'] ?? '50% 50%';
+          }
+          tl.to(el, vars, last.time);
         }
       }
     }
