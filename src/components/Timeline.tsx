@@ -48,10 +48,14 @@ export const Timeline = () => {
     return out;
   }, [duration]);
 
+  const playing = useStore(s => s.ui.playing);
+
   return (
     <section className={styles.panel}>
       <div className={styles.header}>
-        <span className={styles.title}>timeline</span>
+        <button className={styles.playBtn} onClick={tl.toggle}>
+          {playing ? 'Pause animation' : 'Play animation'}
+        </button>
         <span className={styles.time}>
           {time.toFixed(2)}s / {duration.toFixed(2)}s
         </span>
@@ -105,7 +109,7 @@ export const Timeline = () => {
             ))
           )}
           {flat.length === 0 && (
-            <div className={styles.empty}>no tracks · select a layer and add keyframes</div>
+            <div className={styles.empty}>No tracks · select a layer and add keyframes</div>
           )}
           <div
             className={styles.playhead}

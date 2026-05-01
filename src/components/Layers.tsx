@@ -46,7 +46,7 @@ export const Layers = () => {
   const selectedId = useStore(s => s.ui.selectedNodeId);
   return (
     <aside className={styles.panel}>
-      <div className={styles.header}>layers</div>
+      <div className={styles.header}>Layers</div>
       <ul className={styles.list}>
         <Row node={root} depth={0} selectedId={selectedId} />
       </ul>

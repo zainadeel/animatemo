@@ -58,7 +58,7 @@ const initial: AppState = {
     recording: false,
     playing: false,
     time: 0,
-    theme: 'dark',
+    theme: 'light',
   },
 };
 

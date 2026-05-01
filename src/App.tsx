@@ -21,17 +21,15 @@ const App = () => {
   const onImport = (markup: string) => {
     const parsed = parseSvg(markup);
     if (!parsed) {
-      setToast('invalid svg');
+      setToast('Invalid SVG');
       return;
     }
-    // The parsed root is the <svg> wrapper; we add its children to our project root
-    // so the imported shapes render directly (we don't nest <svg> inside <svg>).
     for (const child of parsed.root.children) {
       actions.addNode('root', child);
     }
     const firstChild = parsed.root.children[0];
     if (firstChild) actions.selectNode(firstChild.id);
-    setToast(`imported · ${parsed.paths.length} path${parsed.paths.length === 1 ? '' : 's'}`);
+    setToast(`Imported · ${parsed.paths.length} path${parsed.paths.length === 1 ? '' : 's'}`);
   };
 
   return (

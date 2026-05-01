@@ -7,27 +7,32 @@
   --divider: rgb(0 0 0 / 0.1);
   --hover: rgb(0 0 0 / 0.05);
   --accent: #ff3a3a;
+  color-scheme: light;
+
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
+  --space-5: 20px;
+  --space-6: 24px;
+
   --toolbar-h: 48px;
   --sidebar-l: 220px;
   --sidebar-r: 280px;
   --timeline-h: 220px;
-  --font-mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', 'Menlo', monospace;
+
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --fs-caption: 9px;
   --fs-body: 12px;
 }
 
 [data-theme='dark'] {
-  --bg: #0a0a0a;
+  --bg: #000000;
   --fg: #ffffff;
   --fg-muted: rgb(255 255 255 / 0.5);
   --fg-faint: rgb(255 255 255 / 0.3);
   --divider: rgb(255 255 255 / 0.1);
   --hover: rgb(255 255 255 / 0.05);
   --accent: #ff3a3a;
+  color-scheme: dark;
 }

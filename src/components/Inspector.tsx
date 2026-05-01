@@ -128,8 +128,10 @@ export const Inspector = () => {
   if (!selectedId || !node) {
     return (
       <aside className={styles.panel}>
-        <div className={styles.header}>inspector</div>
-        <div className={styles.empty}>select a layer</div>
+        <div className={styles.header}>
+          <span>Inspector</span>
+        </div>
+        <div className={styles.empty}>Select a layer</div>
       </aside>
     );
   }
@@ -140,29 +142,29 @@ export const Inspector = () => {
   return (
     <aside className={styles.panel}>
       <div className={styles.header}>
-        <span>inspector</span>
+        <span>Inspector</span>
         <button
           className={`${styles.recBtn} ${recording ? styles.recOn : ''}`}
           onClick={() => actions.setRecording(!recording)}
-          title="record mode"
+          title="Record mode"
         >
           <span className={styles.recDot} />
-          rec
+          Rec
         </button>
       </div>
       <div className={styles.section}>
-        <div className={styles.sectionTitle}>node</div>
+        <div className={styles.sectionTitle}>Node</div>
         <div className={styles.metaRow}>
-          <span className={styles.propLabel}>tag</span>
+          <span className={styles.propLabel}>Tag</span>
           <span className={styles.metaVal}>{node.tag}</span>
         </div>
         <div className={styles.metaRow}>
-          <span className={styles.propLabel}>id</span>
+          <span className={styles.propLabel}>Id</span>
           <span className={styles.metaVal}>{node.id}</span>
         </div>
       </div>
       <div className={styles.section}>
-        <div className={styles.sectionTitle}>properties · t={time.toFixed(2)}s</div>
+        <div className={styles.sectionTitle}>Properties · t = {time.toFixed(2)}s</div>
         {props.map(p => (
           <PropRow
             key={p}

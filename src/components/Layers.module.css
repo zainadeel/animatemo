@@ -7,16 +7,15 @@
 }
 
 .header {
-  height: 32px;
+  height: 36px;
   border-bottom: 1px solid var(--divider);
   display: flex;
   align-items: center;
-  padding: 0 var(--space-3);
-  font-family: var(--font-mono);
-  font-size: var(--fs-caption);
-  text-transform: uppercase;
-  color: var(--fg-faint);
-  letter-spacing: 0.04em;
+  padding: 0 var(--space-5);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: -0.01em;
 }
 
 .list {
@@ -27,34 +26,33 @@
 .row {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
   height: 28px;
-  padding-right: var(--space-2);
+  padding-right: var(--space-5);
   cursor: pointer;
   color: var(--fg-muted);
   position: relative;
 }
 
 .row:hover {
-  background: var(--hover);
   color: var(--fg);
 }
 
 .selected {
   color: var(--fg);
-  background: var(--hover);
+}
+
+.selected .id {
+  font-weight: 600;
 }
 
 .tag {
-  font-family: var(--font-mono);
-  font-size: var(--fs-caption);
-  color: var(--fg-faint);
-  text-transform: uppercase;
+  font-size: var(--fs-body);
+  color: var(--fg-muted);
   width: 36px;
 }
 
 .id {
-  font-family: var(--font-mono);
   font-size: var(--fs-body);
   flex: 1;
   white-space: nowrap;
@@ -86,5 +84,4 @@
 
 .del:hover {
   color: var(--fg);
-  background: var(--hover);
 }

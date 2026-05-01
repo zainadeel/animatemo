@@ -7,33 +7,33 @@
 }
 
 .header {
-  height: 32px;
+  height: 36px;
   border-bottom: 1px solid var(--divider);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--space-3);
-  font-family: var(--font-mono);
-  font-size: var(--fs-caption);
-  text-transform: uppercase;
-  color: var(--fg-faint);
-  letter-spacing: 0.04em;
+  padding: 0 var(--space-5);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: -0.01em;
 }
 
 .recBtn {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-family: var(--font-mono);
-  font-size: var(--fs-caption);
-  text-transform: uppercase;
+  gap: 6px;
+  font-size: var(--fs-body);
+  font-weight: 400;
   color: var(--fg-muted);
-  padding: 2px 6px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .recBtn:hover {
   color: var(--fg);
-  background: var(--hover);
 }
 
 .recDot {
@@ -58,23 +58,18 @@
   align-items: center;
   justify-content: center;
   color: var(--fg-faint);
-  font-family: var(--font-mono);
-  font-size: var(--fs-caption);
-  text-transform: uppercase;
+  font-size: var(--fs-body);
 }
 
 .section {
   border-bottom: 1px solid var(--divider);
-  padding: var(--space-2) var(--space-3) var(--space-3);
+  padding: var(--space-4) var(--space-5);
 }
 
 .sectionTitle {
-  font-family: var(--font-mono);
-  font-size: var(--fs-caption);
-  text-transform: uppercase;
-  color: var(--fg-faint);
-  letter-spacing: 0.04em;
-  margin-bottom: var(--space-2);
+  font-size: var(--fs-body);
+  color: var(--fg-muted);
+  margin-bottom: var(--space-3);
 }
 
 .row,
@@ -97,27 +92,31 @@
 }
 
 .propLabel {
-  font-family: var(--font-mono);
-  font-size: var(--fs-caption);
-  text-transform: uppercase;
-  color: var(--fg-faint);
+  font-size: var(--fs-body);
+  color: var(--fg-muted);
+  text-transform: capitalize;
 }
 
 .input {
-  font-family: var(--font-mono);
-  font-size: var(--fs-body);
-  padding: 4px 0;
-  border-bottom: 1px solid var(--divider);
   width: 100%;
+  background: transparent;
+  color: var(--fg);
+  border: none;
+  padding: 1px 4px;
+  font: 500 var(--fs-body) var(--font-mono);
+  letter-spacing: 0.02em;
+  border-radius: 0;
+  text-align: left;
+  transition:
+    box-shadow 0.1s,
+    background 0.1s;
 }
 
-.input:hover {
-  border-bottom-color: var(--fg-muted);
-}
-
+.input:hover,
 .input:focus {
-  border-bottom-color: var(--fg);
-  box-shadow: none;
+  outline: none;
+  background: var(--divider);
+  box-shadow: 0 0 0 2px var(--divider);
 }
 
 .long {
@@ -144,5 +143,4 @@
 
 .kfBtn:hover {
   color: var(--fg);
-  background: var(--hover);
 }
