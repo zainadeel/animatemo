@@ -1,0 +1,33 @@
+:root,
+[data-theme='light'] {
+  --bg: #ffffff;
+  --fg: #000000;
+  --fg-muted: rgb(0 0 0 / 0.5);
+  --fg-faint: rgb(0 0 0 / 0.3);
+  --divider: rgb(0 0 0 / 0.1);
+  --hover: rgb(0 0 0 / 0.05);
+  --accent: #ff3a3a;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --toolbar-h: 48px;
+  --sidebar-l: 220px;
+  --sidebar-r: 280px;
+  --timeline-h: 220px;
+  --font-mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', 'Menlo', monospace;
+  --fs-caption: 9px;
+  --fs-body: 12px;
+}
+
+[data-theme='dark'] {
+  --bg: #0a0a0a;
+  --fg: #ffffff;
+  --fg-muted: rgb(255 255 255 / 0.5);
+  --fg-faint: rgb(255 255 255 / 0.3);
+  --divider: rgb(255 255 255 / 0.1);
+  --hover: rgb(255 255 255 / 0.05);
+  --accent: #ff3a3a;
+}

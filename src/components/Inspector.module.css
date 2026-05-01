@@ -1,0 +1,148 @@
+.panel {
+  width: var(--sidebar-r);
+  border-left: 1px solid var(--divider);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  height: 32px;
+  border-bottom: 1px solid var(--divider);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  letter-spacing: 0.04em;
+}
+
+.recBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  padding: 2px 6px;
+}
+
+.recBtn:hover {
+  color: var(--fg);
+  background: var(--hover);
+}
+
+.recDot {
+  width: 6px;
+  height: 6px;
+  background: var(--fg-faint);
+  border-radius: 50%;
+}
+
+.recOn {
+  color: var(--accent);
+}
+
+.recOn .recDot {
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+}
+
+.empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-faint);
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  text-transform: uppercase;
+}
+
+.section {
+  border-bottom: 1px solid var(--divider);
+  padding: var(--space-2) var(--space-3) var(--space-3);
+}
+
+.sectionTitle {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-2);
+}
+
+.row,
+.metaRow {
+  display: grid;
+  grid-template-columns: 64px 1fr 24px 24px;
+  align-items: center;
+  gap: var(--space-2);
+  height: 28px;
+}
+
+.metaRow {
+  grid-template-columns: 64px 1fr;
+  color: var(--fg-muted);
+}
+
+.metaVal {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+}
+
+.propLabel {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+
+.input {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  padding: 4px 0;
+  border-bottom: 1px solid var(--divider);
+  width: 100%;
+}
+
+.input:hover {
+  border-bottom-color: var(--fg-muted);
+}
+
+.input:focus {
+  border-bottom-color: var(--fg);
+  box-shadow: none;
+}
+
+.long {
+  font-size: 10px;
+}
+
+.kfCount {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  color: var(--fg-faint);
+  text-align: center;
+}
+
+.kfBtn {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-muted);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.kfBtn:hover {
+  color: var(--fg);
+  background: var(--hover);
+}
