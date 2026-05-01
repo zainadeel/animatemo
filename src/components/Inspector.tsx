@@ -154,6 +154,7 @@ export const Inspector = () => {
       </div>
       <div className={styles.section}>
         <div className={styles.sectionTitle}>Node</div>
+
         <div className={styles.metaRow}>
           <span className={styles.propLabel}>Tag</span>
           <span className={styles.metaVal}>{node.tag}</span>

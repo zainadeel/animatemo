@@ -14,9 +14,7 @@
   justify-content: space-between;
   padding: 0 var(--space-5);
   font-size: var(--fs-body);
-  font-weight: 600;
-  color: var(--fg);
-  letter-spacing: -0.01em;
+  color: var(--fg-muted);
 }
 
 .recBtn {
@@ -67,7 +65,10 @@
 }
 
 .sectionTitle {
-  font-size: var(--fs-body);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--fg-muted);
   margin-bottom: var(--space-3);
 }
