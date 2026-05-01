@@ -122,10 +122,17 @@
   height: 8px;
   background: var(--fg);
   transform: translate(-50%, -50%) rotate(45deg);
-  cursor: pointer;
+  cursor: ew-resize;
+  border: none;
+  padding: 0;
+  touch-action: none;
 }
 
 .kf:hover {
+  background: var(--accent);
+}
+
+.kfDragging {
   background: var(--accent);
 }
 

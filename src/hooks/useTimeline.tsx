@@ -10,7 +10,7 @@ import {
 } from 'react';
 import { buildTimeline } from '@/lib/compiler';
 type Timeline = ReturnType<typeof buildTimeline>;
-import { actions, useStore } from '@/state/store';
+import { actions, getState, useStore } from '@/state/store';
 
 export interface TimelineApi {
   registerRef: (id: string, el: Element | null) => void;
@@ -64,6 +64,25 @@ export const TimelineProvider = ({ children }: { children: ReactNode }) => {
       if (tlRef.current === tl) tlRef.current = null;
     };
   }, [project, refTick, playing]);
+
+  // Spacebar toggles play/pause globally, except when typing in an input/textarea
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.code !== 'Space' && e.key !== ' ') return;
+      const t = e.target as HTMLElement | null;
+      const tag = t?.tagName?.toLowerCase();
+      const isEditable =
+        tag === 'input' ||
+        tag === 'textarea' ||
+        tag === 'select' ||
+        t?.isContentEditable;
+      if (isEditable) return;
+      e.preventDefault();
+      actions.setPlaying(!getState().ui.playing);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, []);
 
   useEffect(() => {
     if (!playing) return;
