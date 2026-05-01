@@ -3,46 +3,43 @@ import { TimelineProvider } from '@/hooks/useTimeline';
 import { Toolbar } from '@/components/Toolbar';
 import { Layers } from '@/components/Layers';
 import { Canvas } from '@/components/Canvas';
-import { Inspector } from '@/components/Inspector';
 import { Timeline } from '@/components/Timeline';
 import { Toast } from '@/components/Toast';
+import { SequenceImport } from '@/components/SequenceImport';
 import { actions, useStore } from '@/state/store';
-import { parseSvg } from '@/lib/svgImport';
 import styles from './App.module.css';
 
 const App = () => {
   const theme = useStore(s => s.ui.theme);
   const [toast, setToast] = useState<string | null>(null);
+  const [sequenceOpen, setSequenceOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
-  const onImport = (markup: string) => {
-    const parsed = parseSvg(markup);
-    if (!parsed) {
-      setToast('Invalid SVG');
-      return;
-    }
-    for (const child of parsed.root.children) {
-      actions.addNode('root', child);
-    }
-    const firstChild = parsed.root.children[0];
-    if (firstChild) actions.selectNode(firstChild.id);
-    setToast(`Imported · ${parsed.paths.length} path${parsed.paths.length === 1 ? '' : 's'}`);
-  };
-
   return (
     <TimelineProvider>
       <div className={styles.shell}>
-        <Toolbar onToast={setToast} onImportPaths={onImport} />
+        <Toolbar
+          onToast={setToast}
+          onOpenSequence={() => setSequenceOpen(true)}
+        />
         <div className={styles.middle}>
           <Layers />
           <Canvas />
-          <Inspector />
         </div>
         <Timeline />
         <Toast msg={toast} onDone={() => setToast(null)} />
+        <SequenceImport
+          open={sequenceOpen}
+          onClose={() => setSequenceOpen(false)}
+          onImported={(project, summary) => {
+            actions.replaceProject(project);
+            setToast(summary);
+          }}
+          onWarn={msg => setToast(msg)}
+        />
       </div>
     </TimelineProvider>
   );

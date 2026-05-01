@@ -26,10 +26,9 @@
   align-items: center;
   gap: var(--space-3);
   height: 28px;
-  padding-right: var(--space-5);
+  padding: 0 var(--space-5);
   cursor: pointer;
   color: var(--fg-muted);
-  position: relative;
 }
 
 .row:hover {
@@ -44,10 +43,18 @@
   color: var(--fg);
 }
 
+.rootRow {
+  color: var(--fg-faint);
+}
+
+.rootRow:hover {
+  color: var(--fg-muted);
+}
+
 .tag {
   font-size: var(--fs-body);
-  color: var(--fg-muted);
   width: 36px;
+  text-transform: capitalize;
 }
 
 .id {
@@ -56,30 +63,5 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.dot {
-  width: 4px;
-  height: 4px;
-  background: var(--accent);
-}
-
-.del {
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--fg-faint);
-  opacity: 0;
-  font-size: 14px;
-  line-height: 1;
-}
-
-.row:hover .del {
-  opacity: 1;
-}
-
-.del:hover {
-  color: var(--fg);
+  text-transform: capitalize;
 }

@@ -4,11 +4,9 @@
   align-items: center;
   justify-content: center;
   background: var(--bg);
-  background-image:
-    linear-gradient(var(--divider) 1px, transparent 1px),
-    linear-gradient(90deg, var(--divider) 1px, transparent 1px);
+  background-image: radial-gradient(var(--divider) 1px, transparent 1px);
   background-size: 16px 16px;
-  background-position: -1px -1px;
+  background-position: 0 0;
   overflow: hidden;
   position: relative;
 }
@@ -26,7 +24,10 @@
   transform-origin: 50% 50%;
 }
 
-.selected {
-  outline: 1px solid var(--accent);
-  outline-offset: 2px;
+/* Selection rendered via SVG <rect> overlay with vector-effect: non-scaling-stroke */
+.selectionRect {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1;
+  pointer-events: none;
 }

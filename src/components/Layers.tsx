@@ -4,38 +4,24 @@ import styles from './Layers.module.css';
 
 interface RowProps {
   node: AnimNode;
-  depth: number;
   selectedId: string | null;
 }
 
-const Row = ({ node, depth, selectedId }: RowProps) => {
+const Row = ({ node, selectedId }: RowProps) => {
   const isSelected = selectedId === node.id;
+  const isRoot = node.id === 'root';
   return (
     <>
       <li
-        className={`${styles.row} ${isSelected ? styles.selected : ''}`}
+        className={`${styles.row} ${isSelected ? styles.selected : ''} ${isRoot ? styles.rootRow : ''}`}
         onClick={() => actions.selectNode(node.id)}
-        style={{ paddingLeft: `${8 + depth * 12}px` }}
+        title={isRoot ? 'The root SVG container holding all imported shapes.' : undefined}
       >
         <span className={styles.tag}>{node.tag}</span>
         <span className={styles.id}>{node.id}</span>
-        {node.tracks.length > 0 && <span className={styles.dot} />}
-        {node.id !== 'root' && (
-          <button
-            className={styles.del}
-            onClick={e => {
-              e.stopPropagation();
-              actions.removeNode(node.id);
-            }}
-            aria-label="delete"
-            title="delete"
-          >
-            ×
-          </button>
-        )}
       </li>
       {node.children.map(c => (
-        <Row key={c.id} node={c} depth={depth + 1} selectedId={selectedId} />
+        <Row key={c.id} node={c} selectedId={selectedId} />
       ))}
     </>
   );
@@ -48,7 +34,7 @@ export const Layers = () => {
     <aside className={styles.panel}>
       <div className={styles.header}>Layers</div>
       <ul className={styles.list}>
-        <Row node={root} depth={0} selectedId={selectedId} />
+        <Row node={root} selectedId={selectedId} />
       </ul>
     </aside>
   );
