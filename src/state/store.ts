@@ -1,7 +1,8 @@
 import { useSyncExternalStore } from 'react';
 import type { AnimNode, AnimProject, AppState, Keyframe, PropKey } from './types';
 
-const STORAGE_KEY = 'animatemo:project:v1';
+// Bumped to v2 to invalidate the legacy "rotating star" sample stored under v1
+const STORAGE_KEY = 'animatemo:project:v2';
 
 const emptyProject = (): AnimProject => ({
   duration: 1,
