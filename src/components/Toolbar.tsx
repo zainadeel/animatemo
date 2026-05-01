@@ -66,6 +66,7 @@ export const Toolbar = ({ onToast, onImportPaths }: Props) => {
         >
           Yoyo
         </button>
+        <span className={styles.divider} />
         <label className={styles.field}>
           <span className={styles.fieldLabel}>Duration</span>
           <input

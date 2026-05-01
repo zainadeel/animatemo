@@ -23,6 +23,7 @@
 
 .right {
   justify-content: flex-end;
+  gap: 10px;
 }
 
 .logo {
@@ -30,7 +31,6 @@
   font-weight: 600;
   letter-spacing: -0.01em;
   white-space: nowrap;
-  margin-right: var(--space-2);
 }
 
 .btn {
@@ -43,19 +43,20 @@
   color: var(--fg-muted);
   line-height: 1;
   white-space: nowrap;
-  transition: color 80ms;
-}
-
-.btn:hover {
-  color: var(--fg);
 }
 
 .active {
   color: var(--fg);
 }
 
+.divider {
+  width: 1px;
+  height: 14px;
+  background: var(--divider);
+}
+
 .textToggle {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 10px;
 }
@@ -65,14 +66,16 @@
   align-items: center;
   gap: 6px;
   color: var(--fg-muted);
+  font-size: var(--fs-body);
+  line-height: 1;
 }
 
 .fieldLabel {
-  font-size: var(--fs-body);
+  white-space: nowrap;
 }
 
 .fieldInput {
-  width: 36px;
+  width: 52px;
   background: transparent;
   color: var(--fg);
   border: none;
@@ -84,13 +87,10 @@
   transition:
     box-shadow 0.1s,
     background 0.1s;
-  -moz-appearance: textfield;
 }
 
-.fieldInput::-webkit-outer-spin-button,
 .fieldInput::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+  opacity: 1;
 }
 
 .fieldInput:hover,
