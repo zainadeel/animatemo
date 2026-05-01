@@ -46,7 +46,6 @@ export interface AnimProject {
 
 export interface UiState {
   selectedNodeId: string | null;
-  recording: boolean;
   playing: boolean;
   time: number;
   theme: 'light' | 'dark';
