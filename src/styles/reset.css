@@ -20,7 +20,6 @@ body {
   color: var(--fg);
   background: var(--bg);
   overflow: hidden;
-  -webkit-font-smoothing: antialiased;
 }
 
 button {
